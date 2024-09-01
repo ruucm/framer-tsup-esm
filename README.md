@@ -6,7 +6,7 @@ Supports:
 
 - TypeScript
 - React
-- ESM hosting (Github Pages)
+- ESM hosting (powered by Github Workflows and Github Pages)
 
 Future plans:
 
