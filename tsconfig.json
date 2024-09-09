@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "include": ["."],
+  "include": ["./src/**/*"],
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "composite": false,

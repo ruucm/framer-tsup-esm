@@ -1,24 +1,27 @@
 import * as React from "react";
-import { ControlType } from "framer";
+import { ControlType, PropertyControls } from "framer";
 
 interface Props {
   title: string;
 }
 
-const InnerButton: React.FC<Props> = (props) => {
+type ButtonComponent = React.FC<Props> & {
+  propertyControls: typeof propertyControls;
+};
+
+export const Button: ButtonComponent = (props) => {
   return (
-    <button className="bg-blue-700 p-3 text-green-200 font-bold text-xl rounded-sm">
+    <button className="bg-violet-700 p-6 text-green-200 font-bold text-2xl rounded-sm">
       {props.title}
     </button>
   );
 };
 
-export const Button = InnerButton;
-
-// @ts-ignore
-Button.propertyControls = {
+const propertyControls: PropertyControls<Props> = {
   title: {
     type: ControlType.String,
     defaultValue: "Hello World",
   },
 };
+
+Button.propertyControls = propertyControls;
