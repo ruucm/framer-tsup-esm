@@ -4,19 +4,22 @@ import fs from "fs";
 import path from "path";
 import { Server as SocketIO } from "socket.io";
 
-// Create socket server
-const socketServer = http.createServer();
-const io = new SocketIO(socketServer, {
-  cors: {
-    origin: "*",
-    credentials: true,
-    methods: ["GET", "POST", "OPTIONS", "PUT", "PATCH", "DELETE", "HEAD"],
-  },
-});
-socketServer.listen(8001, "0.0.0.0");
-
 export default defineConfig((options): any => {
   const isDev = options.watch;
+  let io: SocketIO | null = null;
+
+  if (isDev) {
+    // Create socket server
+    const socketServer = http.createServer();
+    io = new SocketIO(socketServer, {
+      cors: {
+        origin: "*",
+        credentials: true,
+        methods: ["GET", "POST", "OPTIONS", "PUT", "PATCH", "DELETE", "HEAD"],
+      },
+    });
+    socketServer.listen(8001, "0.0.0.0");
+  }
 
   return {
     entry: [
