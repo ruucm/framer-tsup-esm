@@ -3,8 +3,9 @@ import http from "http";
 import fs from "fs";
 import path from "path";
 import { Server as SocketIO } from "socket.io";
+import { globby } from "globby";
 
-export default defineConfig((options): any => {
+export default defineConfig(async (options) => {
   const isDev = options.watch;
   let io: SocketIO | null = null;
 
@@ -21,12 +22,10 @@ export default defineConfig((options): any => {
     socketServer.listen(8001, "0.0.0.0");
   }
 
+  const basePath = path.join(process.cwd(), "src");
+
   return {
-    entry: [
-      "src/index.ts",
-      "src/Button.tsx",
-      "src/utils/live-reload/useRealtimeComponent.ts",
-    ],
+    entry: await globby([`${basePath}/**/*.(t|j)s*`, `!${basePath}/**/*.d.ts`]),
     platform: "browser",
     format: ["esm", "cjs"],
     dts: true,

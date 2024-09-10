@@ -1,10 +1,15 @@
 import * as React from "react";
 import { initLiveReload } from "./bootstrap";
+import { RenderTarget } from "framer";
+
+export const isDev = [RenderTarget.canvas].includes(RenderTarget.current());
 
 export function useRealtimeComponent(
   originalComponent: React.ComponentType,
   componentName: string
 ) {
+  if (!isDev) return originalComponent;
+
   const [, setForceRerender] = React.useState(0);
   const updateCount = React.useRef(0);
   const updatedInstance = React.useRef(null);
@@ -19,7 +24,7 @@ export function useRealtimeComponent(
         `http://127.0.0.1:8000/${componentName}.mjs?${updateCount.current}`
       );
       updateCount.current++;
-      updatedInstance.current = response[componentName];
+      updatedInstance.current = response[componentName.split("/").pop()]; // the last element is the component name (e.g /auth/Init -> Init)
       setForceRerender(updateCount.current);
     };
 
