@@ -1,1 +1,1 @@
-import{a}from"./chunk-FYURYBUF.mjs";import"./chunk-XJVIZ2Q2.mjs";export{a as Box};
+import"./chunk-XJVIZ2Q2.mjs";import o from"https://framer.com/m/framer/Example.js@^1.0.0";import{Fragment as l,jsx as e,jsxs as r}from"react/jsx-runtime";function i(){return console.log("Example",o),r(l,{children:[e("div",{style:{width:100,height:100,backgroundColor:"red"},children:"Box"}),e(o,{})]})}export{i as Box};

@@ -1,0 +1,1 @@
+import{useLayoutEffect as c}from"react";import{Fragment as e,jsx as n}from"react/jsx-runtime";function d(){return c(()=>{if(!document.querySelector('script[src="https://cdn.tailwindcss.com"]')){let t=document.createElement("script");return t.src="https://cdn.tailwindcss.com",t.async=!0,document.head.appendChild(t),()=>{document.head.removeChild(t)}}},[]),n(e,{})}export{d as a};

@@ -1,5 +1,4 @@
-export { hey } from './consts.mjs';
-export { Box } from './Box.mjs';
+export { Tailwind } from './Tailwind.mjs';
 export { Button } from './Button.mjs';
 export { Input } from './inputs/Input.mjs';
 import 'react';
