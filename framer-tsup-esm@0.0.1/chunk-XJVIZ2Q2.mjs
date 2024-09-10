@@ -1,0 +1,1 @@
+var k=Object.defineProperty;var l=(d,c)=>{for(var a in c)k(d,a,{get:c[a],enumerable:!0})};var m=(d,c,a)=>new Promise((h,g)=>{var i=b=>{try{e(a.next(b))}catch(f){g(f)}},j=b=>{try{e(a.throw(b))}catch(f){g(f)}},e=b=>b.done?h(b.value):Promise.resolve(b.value).then(i,j);e((a=a.apply(d,c)).next())});export{l as a,m as b};
