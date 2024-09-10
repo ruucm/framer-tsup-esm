@@ -27,10 +27,11 @@ export default defineConfig((options): any => {
       "src/Button.tsx",
       "src/utils/live-reload/useRealtimeComponent.ts",
     ],
+    platform: "browser",
     format: ["esm", "cjs"],
     dts: true,
     minify: !isDev,
-    external: ["react", "framer", "framer-motion", "socket.io-client"],
+    external: ["react", "framer", "framer-motion"],
     async onSuccess() {
       if (!isDev) return;
 
