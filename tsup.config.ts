@@ -34,7 +34,7 @@ export default defineConfig((options): any => {
     async onSuccess() {
       if (!isDev) return;
 
-      io.emit("build");
+      io?.emit("build");
 
       // Create the HTTP server
       const server = http.createServer((req, res) => {
@@ -42,7 +42,7 @@ export default defineConfig((options): any => {
         let filePath = path.join(
           __dirname,
           "dist",
-          req.url === "/" ? "index.html" : req.url
+          req.url === "/" || !req.url ? "index.html" : req.url
         );
         let extname = String(path.extname(filePath)).toLowerCase();
         // need to remove query from extname
