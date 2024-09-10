@@ -11,7 +11,7 @@ type ButtonComponent = React.FC<Props> & {
 
 export const Button: ButtonComponent = (props) => {
   return (
-    <button className="bg-violet-700 p-6 text-green-200 font-bold text-2xl rounded-sm">
+    <button className="bg-violet-700 p-3 text-green-200 font-bold text-xl rounded-sm">
       {props.title}
     </button>
   );
