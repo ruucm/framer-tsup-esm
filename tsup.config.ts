@@ -30,6 +30,7 @@ export default defineConfig(async (options) => {
     format: ["esm", "cjs"],
     dts: true,
     minify: !isDev,
+    clean: true,
     external: ["react", "framer", "framer-motion"],
     async onSuccess() {
       if (!isDev) return;
