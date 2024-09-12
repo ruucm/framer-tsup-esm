@@ -7,10 +7,7 @@ Supports:
 - TypeScript
 - React
 - ESM hosting (powered by Github Workflows and Github Pages)
-
-Future plans:
-
-- Support hot module reloading
+- Hot module reloading (Components Only for now)
 
 ## Github Setups
 
@@ -22,23 +19,16 @@ Future plans:
 https://framer.com/projects/framer-tsup-esm--lLG7BjQ9yVi8xMvGbgIT-iYZXI
 
 ```tsx
-import { Button as ImportedComponent } from "http://127.0.0.1:8000/index.mjs";
-import { useRealtimeComponent } from "http://127.0.0.1:8000/utils/live-reload/useRealtimeComponent.mjs";
-import { useTailwind } from "./Utils.tsx";
+import { Button as ImportedComponent } from "http://yourdomain.ngrok-free.app/index.mjs";
+import { useRealtimeComponent } from "http://yourdomain.ngrok-free.app/utils/live-reload/useRealtimeComponent.mjs";
 import { addPropertyControls } from "framer";
 
 /**
- * These annotations control how your component sizes
- * Learn more: https://www.framer.com/developers/#code-components-auto-sizing
- *
  * @framerSupportedLayoutWidth auto
  * @framerSupportedLayoutHeight auto
  */
 export function ButtonLive(props) {
-  useTailwind();
-
   const Component = useRealtimeComponent(ImportedComponent, "Button");
-
   return <Component {...props} />;
 }
 

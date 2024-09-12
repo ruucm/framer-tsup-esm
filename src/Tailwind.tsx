@@ -1,6 +1,8 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 
 export function Tailwind() {
+  const [loaded, setLoaded] = useState(false);
+
   useLayoutEffect(() => {
     // Check if Tailwind CSS script already exists
     if (!document.querySelector('script[src="https://cdn.tailwindcss.com"]')) {
@@ -9,6 +11,9 @@ export function Tailwind() {
       script.src = "https://cdn.tailwindcss.com";
       script.async = true;
       document.head.appendChild(script); // Append to head instead of body
+
+      setLoaded(true);
+
       // Clean up the script when the component unmounts
       return () => {
         document.head.removeChild(script);
@@ -16,5 +21,6 @@ export function Tailwind() {
     }
   }, []);
 
+  if (!loaded) return <>loading tailwind...</>;
   return <></>;
 }
