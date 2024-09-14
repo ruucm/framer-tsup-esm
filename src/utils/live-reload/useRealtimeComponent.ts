@@ -2,7 +2,9 @@ import * as React from "react";
 import { initLiveReload } from "./bootstrap";
 import { RenderTarget } from "framer";
 
-export const isDev = [RenderTarget.canvas].includes(RenderTarget.current());
+export const isDev = [RenderTarget.canvas, RenderTarget.preview].includes(
+  RenderTarget.current()
+);
 
 export function useRealtimeComponent(
   originalComponent: React.ComponentType,
